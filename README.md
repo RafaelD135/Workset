@@ -23,3 +23,6 @@
 ## Exemple d'utilisation
 - Développeur web : ouverture simultanée de backend, frontend, éditeur de code et navigateurs sur localhost.
 - Étudiant : automatisation de scripts et gain de temps pour ses projets scolaires.
+
+## Aperçu de la v1 de la maquette le 13/01/2026
+![Capture d'écran de l'aperçu de la v1 de la maquette 13/01/2026](/maquette_v1_13-01-2026.png)
