@@ -1,4 +1,4 @@
-use crate::models::{AutomatedTask, TaskConfig};
+use crate::models::{AutomatedTask, TaskConfig, Workspace};
 
 use std::process::Command;
 
@@ -55,6 +55,18 @@ pub fn launch_task(task: AutomatedTask) -> Result<(), String> {
                 .arg(path)
                 .spawn()
                 .map_err(|e| e.to_string())?;
+        }
+    }
+    Ok(())
+}
+
+#[tauri::command]
+pub fn launch_workspace(workspace: Workspace, all_tasks: Vec<AutomatedTask>) -> Result<(), String> {
+    for task_id in workspace.tasks {
+        if let Some(task) = all_tasks.iter().find(|t| t.id == task_id) {
+            launch_task(task.clone())?;
+        } else {
+            println!("Avertissement : La tâche avec l'ID {} n'a pas été trouvée.", task_id);
         }
     }
     Ok(())
