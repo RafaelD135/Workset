@@ -12,14 +12,14 @@ pub enum TaskConfig {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AutomatedTask {
-    pub id: u32,
+    pub id: u64,
     pub name: String,
     pub config: TaskConfig,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Workspace {
-    pub id: u32,
+    pub id: u64,
     pub name: String,
-    pub tasks: Vec<u32>,
+    pub tasks: Vec<u64>,
 }
