@@ -34,6 +34,7 @@ export default function App() {
 
     return (
         <Flex h="100vh" w="100vw" overflow="hidden">
+            {/* Bar de navigation */}
             <Box 
                 w="260px" 
                 bg={theme === "light" ? "gray.50" : "gray.900"} 
@@ -73,6 +74,7 @@ export default function App() {
                 </Box>
             </Box>
 
+            {/* Zone de contenu principal */}
             <Box 
                 flex={1} 
                 p={10} 
