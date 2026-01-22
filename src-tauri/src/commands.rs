@@ -2,6 +2,9 @@ use crate::models::{AutomatedTask, TaskConfig, Workspace};
 
 use std::process::Command;
 
+use tauri::AppHandle;
+use tauri::Manager;
+
 use webbrowser;
 
 #[tauri::command]
@@ -60,13 +63,41 @@ pub fn launch_task(task: AutomatedTask) -> Result<(), String> {
     Ok(())
 }
 
+pub fn get_task_by_id(app_handle: &AppHandle, id: u64) -> Result<AutomatedTask, String> {
+    // 1. Définir le chemin du fichier tasks.json
+    let path = app_handle
+        .path()
+        .app_config_dir()
+        .map_err(|e| e.to_string())?
+        .join("tasks.json");
+
+    // 2. Lire le fichier
+    let data = std::fs::read_to_string(path)
+        .map_err(|_| "Impossible de lire le fichier des tâches".to_string())?;
+
+    // 3. Désérialiser la liste
+    let tasks: Vec<AutomatedTask> = serde_json::from_str(&data)
+        .map_err(|e| format!("Erreur JSON : {}", e))?;
+
+    // 4. Trouver la tâche
+    tasks.into_iter()
+        .find(|t| t.id == id)
+        .ok_or_else(|| format!("Tâche avec l'ID {} introuvable", id))
+}
+
 #[tauri::command]
-pub fn launch_workspace(workspace: Workspace, all_tasks: Vec<AutomatedTask>) -> Result<(), String> {
+pub fn launch_workspace(app_handle: tauri::AppHandle, workspace: Workspace) -> Result<(), String> {
     for task_id in workspace.tasks {
-        if let Some(task) = all_tasks.iter().find(|t| t.id == task_id) {
-            launch_task(task.clone())?;
-        } else {
-            println!("Avertissement : La tâche avec l'ID {} n'a pas été trouvée.", task_id);
+        // On récupère la tâche dynamiquement par son ID
+        match get_task_by_id(&app_handle, task_id) {
+            Ok(task) => {
+                // On appelle ta fonction launch_task existante
+                launch_task(task)?;
+            },
+            Err(e) => {
+                // On log l'erreur mais on continue pour ne pas bloquer les autres tâches
+                eprintln!("Avertissement : {}", e);
+            }
         }
     }
     Ok(())
