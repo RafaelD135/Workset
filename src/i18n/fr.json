@@ -18,5 +18,9 @@
 	"launch_at_startup" : "Lancer au démarrage",
 	"manage_autostart_settings" : "Gérer les paramètres de démarrage automatique",
 
-	"delete_data": "Supprimer les données"
+	"delete_data": "Supprimer les données",
+
+	"see_all": "Voir tout",
+
+	"available_tasks": "tâches"
 }

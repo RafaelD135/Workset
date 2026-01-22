@@ -20,7 +20,7 @@ export default function App() {
     const renderContent = () => {
         switch (activePage) {
             case "dashboard":
-                return <Dashboard />;
+                return <Dashboard onNavigate={setActivePage} />;
             case "workspaces":
                 return <WorkspaceList />;
             case "tasks":
