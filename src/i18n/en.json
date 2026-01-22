@@ -1,7 +1,16 @@
 {
-	"welcome": "Welcome to Workset",
+	"dashboard": "Dashboard",
+	"tasks": "Tasks",
+	"workspaces": "Workspaces",
 	"settings": "Settings",
-	"add_task": "Add a task",
-	"launch_all": "Launch All",
-	"theme_toggle": "Toggle Theme"
+
+	"appearance": "Appearance",
+	"theme_mode": "Theme Mode",
+	"dark_mode_activated": "Dark mode activated",
+	"light_mode_activated": "Light mode activated",
+	"switch_to_dark_mode": "Switch to Dark Mode",
+	"switch_to_light_mode": "Switch to Light Mode",
+	"language_settings": "Language",
+	"language": "Interface Language",
+	"select_your_language": "Select your preferred language"
 }
