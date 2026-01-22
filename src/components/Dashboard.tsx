@@ -71,7 +71,7 @@ export default function Dashboard({ onNavigate }: { onNavigate: (page: string) =
 						size="sm" 
 						color="blue.400"
 						onClick={() => onNavigate("workspaces")}
-						_hover={{ bg: "transparent", color: "blue.500" }} // Optionnel : pour un look plus propre
+						_hover={{ bg: "transparent", color: "blue.500" }}
 					>
 						{t("see_all")}
 					</Button>

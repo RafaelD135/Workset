@@ -18,7 +18,7 @@ import { useTheme as useNextTheme } from "next-themes";
 interface Workspace {
     id: number;
     name: string;
-    tasks: number[]; // IDs des tâches
+    tasks: number[];
 }
 
 export default function WorkspaceComponent({ workspace }: any) {
@@ -47,7 +47,7 @@ export default function WorkspaceComponent({ workspace }: any) {
 		>
 			<Flex align="center" justify="space-between">
                 <HStack>
-                    {/* Placeholder pour l'icône (vide pour l'instant comme demandé) */}
+                    {/* Placeholder pour l'icône (vide pour l'instant) */}
                     <SkeletonCircle size="10" bg={theme === "light" ? "gray.300" : "gray.600"} />
 
                     <VStack align="start">
@@ -61,7 +61,7 @@ export default function WorkspaceComponent({ workspace }: any) {
                             fontSize="sm" 
                             color={theme === "light" ? "gray.600" : "gray.400"}
                         >
-                            {/* Affiche le nombre de tâches ou une liste fictive pour le style */}
+                            {/* Affiche du nombre de tâches */}
                             {workspace.tasks.length} {t("available_tasks")}
                         </Text>
                     </VStack>
