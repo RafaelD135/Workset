@@ -12,5 +12,11 @@
 	"switch_to_light_mode": "Passer au mode clair",
 	"language_settings": "Langue",
 	"language": "Langue de l'interface",
-	"select_your_language": "Sélectionnez votre langue préférée"
+	"select_your_language": "Sélectionnez votre langue préférée",
+
+	"autostart_settings": "Démarrage automatique",
+	"launch_at_startup" : "Lancer au démarrage",
+	"manage_autostart_settings" : "Gérer les paramètres de démarrage automatique",
+
+	"delete_data": "Supprimer les données"
 }

@@ -12,5 +12,11 @@
 	"switch_to_light_mode": "Switch to Light Mode",
 	"language_settings": "Language",
 	"language": "Interface Language",
-	"select_your_language": "Select your preferred language"
+	"select_your_language": "Select your preferred language",
+
+	"autostart_settings": "Autostart",
+	"launch_at_startup" : "Launch at startup",
+	"manage_autostart_settings" : "Manage autostart settings",
+
+	"delete_data": "Delete Data"
 }

@@ -6,7 +6,9 @@ import {
     HStack, 
     Button, 
     NativeSelectRoot, 
-    NativeSelectField 
+    NativeSelectField,
+    Switch,
+    Separator
 } from "@chakra-ui/react";
 
 import { useTheme as useNextTheme } from "next-themes";
@@ -21,19 +23,19 @@ export default function Settings() {
     };
 
     return (
-        <Box maxW="600px">
+        <Box maxW="1000px">
             <Heading size="lg" mb={6}>{t("settings")}</Heading>
 
             <VStack align="stretch">
                 
                 {/* Section : Apparence */}
-                <Box>
+                <Box mb={5}>
                     <Text fontSize="sm" fontWeight="bold" color="blue.500" mb={4} textTransform="uppercase">
-                        {t("appearance") || "Apparence"}
+                        {t("appearance")}
                     </Text>
                     <HStack justify="space-between" p={4} borderWidth="1px" borderRadius="md">
                         <Box>
-                            <Text fontWeight="medium">{t("theme_mode") || "Mode de couleur"}</Text>
+                            <Text fontWeight="medium">{t("theme_mode")}</Text>
                             <Text fontSize="sm" color="gray.500">
                                 {theme === "light" ? t("light_mode_activated"): t("dark_mode_activated")}
                             </Text>
@@ -45,7 +47,7 @@ export default function Settings() {
                 </Box>
 
                 {/* Section : Langue */}
-                <Box>
+                <Box mb={5}>
                     <Text fontSize="sm" fontWeight="bold" color="blue.500" mb={4} textTransform="uppercase">
                         {t("language_settings")}
                     </Text>
@@ -65,6 +67,42 @@ export default function Settings() {
                         </NativeSelectRoot>
                     </HStack>
                 </Box>
+
+                {/* Section : Lancement automatique */}
+                <Box mb={5}>
+                    <Text fontSize="sm" fontWeight="bold" color="blue.500" mb={4} textTransform="uppercase">
+                        {t("autostart_settings")}
+                    </Text>
+                    <HStack justify="space-between" p={4} borderWidth="1px" borderRadius="md">
+                        <Box>
+                            <Text fontWeight="medium">{t("launch_at_startup")}</Text>
+                            <Text fontSize="sm" color="gray.500">{t("manage_autostart_settings")}</Text>
+                        </Box>
+                            <Switch.Root colorScheme="blue">
+                                <Switch.Control>
+                                    <Switch.Thumb />
+                                </Switch.Control>
+                            </Switch.Root>
+                    </HStack>
+                </Box>
+
+                <Separator mb={5} />
+
+                {/* Section : Réinitialisation */}
+                <Box mb={5}>
+                    <Text fontSize="sm" fontWeight="bold" color="red.500" mb={4} textTransform="uppercase">
+                        {t("delete_data")}
+                    </Text>
+                    <HStack justify="space-between" p={4} borderWidth="1px" borderRadius="md" borderColor={theme === "light" ? "red.300" : "red.900"} bg={theme === "light" ? "red.50" : "red.950"}>
+                        <Box>
+                            <Text fontWeight="medium">{t("delete_data")}</Text>
+                            <Text fontSize="sm" color={theme === "dark" ? "red.400" : "red.600"}>{t("delete_data")}</Text>
+                        </Box>
+                        <Button colorScheme="red" variant="surface" size="sm" bg={theme === "light" ? "red.200" : "red.800"} _hover={{ bg: theme === "light" ? "red.300" : "red.700" }}>
+                            {t("delete_data")}
+                        </Button>
+                    </HStack>
+                </Box>        
             </VStack>
         </Box>
     );
