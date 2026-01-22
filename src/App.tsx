@@ -37,9 +37,9 @@ export default function App() {
             {/* Bar de navigation */}
             <Box 
                 w="260px" 
-                bg={theme === "light" ? "gray.50" : "gray.900"} 
+                bg={theme === "light" ? "gray.50" : "#0F1116"} 
                 borderRight="1px solid" 
-                borderColor={theme === "light" ? "gray.200" : "gray.700"}
+                borderColor={theme === "light" ? "gray.200" : "#212530"}
                 p={5}
             >
                 <Heading size="md" mb={10} color="blue.500">Workset</Heading>
@@ -78,8 +78,8 @@ export default function App() {
             <Box 
                 flex={1} 
                 p={10} 
-                bg={theme === "light" ? "white" : "gray.950"} 
-                color={theme === "light" ? "black" : "white"}
+                bg={theme === "light" ? "white" : "#090C10"} 
+                color={theme === "light" ? "black" : "#e2e2e2"}
                 overflowY="auto"
             >
                 {renderContent()}
@@ -90,10 +90,15 @@ export default function App() {
 }
 
 function NavButton({ isActive, onClick, label }: any) {
+    const { theme } = useNextTheme();
+
     return (
         <Button 
             onClick={onClick}
-            variant={isActive ? "solid" : "ghost"} 
+            variant={isActive ? "solid" : "ghost"}
+            bg={isActive ? (theme === "light" ? "blue.300" : "blue.900"): "transparent"}
+            color={isActive ? (theme === "light" ? "blue.700" : "#83DFFF") : (theme === "light" ? "gray.700" : "gray.300")}
+            _hover={{ bg: isActive ? (theme === "light" ? "blue.200" : "blue.800") : (theme === "light" ? "blue.100" : "blue.800") }}
             colorScheme={isActive ? "blue" : "gray"}
             justifyContent="start"
             width="full"
