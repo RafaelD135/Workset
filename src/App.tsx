@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Box, Flex, VStack, Button, Heading, Text, HStack } from "@chakra-ui/react";
+import { Box, Flex, VStack, Button, Heading, Text, HStack, Spacer } from "@chakra-ui/react";
 
 import { useTheme as useNextTheme } from "next-themes";
 
@@ -37,8 +37,9 @@ export default function App() {
     return (
         <Flex h="100vh" w="100vw" overflow="hidden">
             {/* Bar de navigation */}
-            <Box 
+            <Flex 
                 w="260px" 
+                direction="column"
                 bg={theme === "light" ? "gray.50" : "#0F1116"} 
                 borderRight="1px solid" 
                 borderColor={theme === "light" ? "gray.200" : "#212530"}
@@ -78,12 +79,14 @@ export default function App() {
                     />
                 </VStack>
 
+                <Spacer />
+
                 <Box pt={10}>
                     <Text fontSize="xs" color="gray.500" textAlign="center">
                         Workset - v1.0.0
                     </Text>
                 </Box>
-            </Box>
+            </Flex>
 
             {/* Zone de contenu principal */}
             <Box 
