@@ -27,5 +27,11 @@
 	"create_first_task": "Créer ma première tâche",
 	"no_tasks_found": "Aucune tâche pour le moment",
 	"tasks_total_count": "tâches configurées",
-	"add_task": "Ajouter une tâche"
+	"add_task": "Ajouter une tâche",
+
+	"no_workspaces_found": "Aucun espace de travail pour le moment",
+	"create_first_workspace": "Créer mon premier espace de travail",
+
+	"workspaces_total_count": "espaces de travail configurés",
+	"add_workspace": "Nouvel Espace de Travail"
 }

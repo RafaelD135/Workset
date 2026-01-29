@@ -27,5 +27,10 @@
 	"create_first_task": "Create my first task",
 	"no_tasks_found": "No tasks for now",
 	"tasks_total_count": "configured tasks",
-	"add_task": "Add Task"
+	"add_task": "Add Task",
+
+	"no_workspaces_found": "No workspaces for now",
+	"create_first_workspace": "Create my first workspace",
+	"workspaces_total_count": "configured workspaces",
+	"add_workspace": "New Workspace"
 }
