@@ -22,5 +22,10 @@
 
 	"see_all": "See All",
 
-	"available_tasks": "tasks"
+	"available_tasks": "tasks",
+
+	"create_first_task": "Create my first task",
+	"no_tasks_found": "No tasks for now",
+	"tasks_total_count": "configured tasks",
+	"add_task": "Add Task"
 }
