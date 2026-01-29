@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Box, Flex, VStack, Button, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, VStack, Button, Heading, Text, HStack } from "@chakra-ui/react";
 
 import { useTheme as useNextTheme } from "next-themes";
 
@@ -10,6 +10,8 @@ import Dashboard from "./components/Dashboard";
 import WorkspaceList from "./components/WorkspaceList";
 import TaskList from "./components/TaskList";
 import Settings from "./components/Settings";
+
+import AppLogo from "./assets/icon.png";
 
 export default function App() {
     const { theme } = useNextTheme();
@@ -42,8 +44,17 @@ export default function App() {
                 borderColor={theme === "light" ? "gray.200" : "#212530"}
                 p={5}
             >
-                <Heading size="md" mb={10} color="blue.500">Workset</Heading>
-                
+                {/* Heading avec Logo et Texte */}
+                <Heading size="md" mb={10} color="blue.500">
+                    <HStack>
+                        <img 
+                            src={AppLogo} 
+                            alt="Workset Logo" 
+                            style={{ width: "28px", height: "28px" }} 
+                        />
+                        <Text>Workset</Text>
+                    </HStack>
+                </Heading>                
                 <VStack align="stretch">
                     <NavButton 
                         isActive={activePage === "dashboard"} 
