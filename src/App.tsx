@@ -83,7 +83,10 @@ export default function App() {
 
                 <Box pt={10}>
                     <Text fontSize="xs" color="gray.500" textAlign="center">
-                        Workset - v1.0.0
+                        Workset &#169;Rafael
+                    </Text>
+                    <Text fontSize="xs" color="gray.500" textAlign="center">
+                       ( In development )
                     </Text>
                 </Box>
             </Flex>
