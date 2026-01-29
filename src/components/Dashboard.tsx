@@ -14,11 +14,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme as useNextTheme } from "next-themes";
 
 import WorkspaceComponent from "./WorkspaceComponent";
-
-import VscodeIcon from "../assets/taskIcons/vscode.svg"; 
-import TerminalIcon from "../assets/taskIcons/terminal.svg";
-import ExplorerIcon from "../assets/taskIcons/explorer.svg";
-import BrowserIcon from "../assets/taskIcons/browser.svg";
+import TaskComponent from "./TaskComponent";
 
 // Types correspondants au Rust
 interface Task {
@@ -81,6 +77,29 @@ export default function Dashboard({ onNavigate }: { onNavigate: (page: string) =
 				<SimpleGrid columns={{ base: 1, md: 1, lg: 2, xl: 3 }} gap={5}>
 					{workspaces.slice(0,6).map((ws: any) => (
 						<WorkspaceComponent key={ws.id} workspace={ws} />
+					))}
+				</SimpleGrid>
+			</Box>
+
+			{/* Section des tasks */}
+			<Box mb={10}>
+				<Flex justify="space-between" align="center" mb={4}>
+					<Heading size="sm">{t("tasks")}</Heading>
+					<Button 
+						variant="ghost" 
+						size="sm" 
+						color="blue.400"
+						onClick={() => onNavigate("tasks")}
+						_hover={{ bg: "transparent", color: "blue.500" }}
+					>
+						{t("see_all")}
+					</Button>
+				</Flex>
+
+				{/* Liste des tasks */}
+				<SimpleGrid columns={{ base: 1, md: 1, lg: 2, xl: 3 }} gap={5}>
+					{tasks.slice(0,6).map((task: any) => (
+						<TaskComponent key={task.id} task={task} />
 					))}
 				</SimpleGrid>
 			</Box>
