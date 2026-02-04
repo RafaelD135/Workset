@@ -70,7 +70,7 @@ export default function TaskList() {
             {tasks.length > 0 ? (
                 <SimpleGrid columns={{ base: 1 }} gap={5}>
                     {tasks.map((task) => (
-                        <TaskComponent key={task.id} task={task} />
+                        <TaskComponent key={task.id} task={task} showEdit={true} />
                     ))}
                 </SimpleGrid>
             ) : (

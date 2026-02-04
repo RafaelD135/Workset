@@ -10,6 +10,7 @@ import {
 
 import { invoke } from '@tauri-apps/api/core';
 import { FaPlay } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import { useTheme as useNextTheme } from "next-themes";
 
@@ -28,7 +29,7 @@ interface Task {
     };
 }
 
-export default function TaskComponent({ task }: { task: Task }) {
+export default function TaskComponent({ task, showEdit = false }: { task: Task, showEdit?: boolean }) {
     const { t } = useTranslation();
     const { theme } = useNextTheme();
 
@@ -89,21 +90,41 @@ export default function TaskComponent({ task }: { task: Task }) {
                     </VStack>
                 </HStack>
 
-                {/* Bouton Play */}
-                <IconButton
-                    aria-label="Launch Task"
-                    size="md"
-                    borderRadius="full"
-                    bg={theme === "light" ? "blue.300" : "blue.900"}
-                    color={theme === "light" ? "#173DA6" : "#83DFFF"}
-                    _hover={{ bg: theme === "light" ? "#173DA6" : "#83DFFF" , color: theme === "light" ? "blue.300" : "blue.900" }}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        handleLaunchTask();
-                    }}
-                >
-                    <FaPlay style={{ marginLeft: "2px" }} size={14} />
-                </IconButton>
+                <HStack>
+                    {/* Affichage du bouton d'édition si showEdit est vrai */}
+                    {showEdit && (
+                        <IconButton
+                            aria-label="Edit Task"
+                            size="md"
+                            borderRadius="full"
+                            bg={theme === "light" ? "gray.200" : "gray.700"}
+                            color={theme === "light" ? "gray.800" : "gray.100"}
+                            _hover={{ bg: theme === "light" ? "gray.300" : "gray.600" }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                console.log("Ouvrir modal édition tâche pour :", task.id);
+                            }}
+                        >
+                            <IoMdSettings/>
+                        </IconButton>
+                    )}
+
+                    {/* Bouton Play */}
+                    <IconButton
+                        aria-label="Launch Task"
+                        size="md"
+                        borderRadius="full"
+                        bg={theme === "light" ? "blue.300" : "blue.900"}
+                        color={theme === "light" ? "#173DA6" : "#83DFFF"}
+                        _hover={{ bg: theme === "light" ? "#173DA6" : "#83DFFF" , color: theme === "light" ? "blue.300" : "blue.900" }}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            handleLaunchTask();
+                        }}
+                    >
+                        <FaPlay style={{ marginLeft: "2px" }} size={14} />
+                    </IconButton>
+                </HStack>
             </Flex>
         </Box>
     );
