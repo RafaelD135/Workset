@@ -11,6 +11,8 @@ import {
 import { invoke } from '@tauri-apps/api/core';
 
 import { FaPlay } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+
 
 import { useTranslation } from "react-i18next";
 import { useTheme as useNextTheme } from "next-themes";
@@ -21,7 +23,7 @@ interface Workspace {
     tasks: number[];
 }
 
-export default function WorkspaceComponent({ workspace }: any) {
+export default function WorkspaceComponent({ workspace, showEdit = false }: any) {
 	const { t } = useTranslation();
     const { theme } = useNextTheme();
 
@@ -67,22 +69,41 @@ export default function WorkspaceComponent({ workspace }: any) {
                     </VStack>
                 </HStack>
 
-                {/* Bouton Play à droite */}
-                <IconButton
-                    aria-label="Launch Workspace"
-                    size="md"
-					borderRadius="full"
-                    bg={theme === "light" ? "blue.300" : "blue.900"}
-					color={theme === "light" ? "#173DA6" : "#83DFFF"}
-                    _hover={{ bg: theme === "light" ? "#173DA6" : "#83DFFF" , color: theme === "light" ? "blue.300" : "blue.900" }}
-					onClick={() => handleLaunchWorkspace(workspace)}
-                >
-					<FaPlay
-						style={{ marginLeft: "2px" }}
-						size={16}
-					/>
-				</IconButton>
+                <HStack>
+                    {/* Affichage du bouton d'édition si showEdit est vrai */}
+                    {showEdit && (
+                        <IconButton
+                            aria-label="Edit Task"
+                            size="md"
+                            borderRadius="full"
+                            bg={theme === "light" ? "gray.200" : "gray.700"}
+                            color={theme === "light" ? "gray.800" : "gray.100"}
+                            _hover={{ bg: theme === "light" ? "gray.300" : "gray.600" }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                console.log("Ouvrir modal édition workspace pour :", workspace.id);
+                            }}
+                        >
+                            <IoMdSettings/>
+                        </IconButton>
+                    )}
 
+                    {/* Bouton Play à droite */}
+                    <IconButton
+                        aria-label="Launch Workspace"
+                        size="md"
+                        borderRadius="full"
+                        bg={theme === "light" ? "blue.300" : "blue.900"}
+                        color={theme === "light" ? "#173DA6" : "#83DFFF"}
+                        _hover={{ bg: theme === "light" ? "#173DA6" : "#83DFFF" , color: theme === "light" ? "blue.300" : "blue.900" }}
+                        onClick={() => handleLaunchWorkspace(workspace)}
+                    >
+                        <FaPlay
+                            style={{ marginLeft: "2px" }}
+                            size={16}
+                        />
+                    </IconButton>
+                </HStack>
             </Flex>
 		</Box>
 	);

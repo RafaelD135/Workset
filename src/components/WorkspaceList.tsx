@@ -68,10 +68,7 @@ export default function WorkspaceList() {
             {workspaces.length > 0 ? (
                 <SimpleGrid columns={{ base: 1}} gap={5}>
                     {workspaces.map((ws) => (
-                        <WorkspaceComponent 
-                            key={ws.id} 
-                            workspace={ws}
-                        />
+                        <WorkspaceComponent key={ws.id} workspace={ws} showEdit={true} />
                     ))}
                 </SimpleGrid>
             ) : (
