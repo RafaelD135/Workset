@@ -25,7 +25,7 @@ interface Task {
     };
 }
 
-export default function TaskList() {
+export default function TaskList({ onNavigate }: { onNavigate: (page: string) => void }) {
     const { t } = useTranslation();
     const { theme } = useNextTheme();
     const [tasks, setTasks] = useState<Task[]>([]);
@@ -60,7 +60,7 @@ export default function TaskList() {
                     colorScheme="blue" 
                     size="md"
                     borderRadius="lg"
-                    onClick={() => console.log("Ouvrir modal création tâche")}
+                    onClick={() => onNavigate("create_task")}
                 >
                     {t("add_task")} <Box as={FaPlus} ml={2} />
                 </Button>

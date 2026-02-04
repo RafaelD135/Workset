@@ -11,6 +11,8 @@ import WorkspaceList from "./components/WorkspaceList";
 import TaskList from "./components/TaskList";
 import Settings from "./components/Settings";
 
+import CreateTask from "./components/tasks/CreateTask";
+
 import AppLogo from "./assets/icon.png";
 
 export default function App() {
@@ -24,11 +26,13 @@ export default function App() {
             case "dashboard":
                 return <Dashboard onNavigate={setActivePage} />;
             case "workspaces":
-                return <WorkspaceList />;
+                return <WorkspaceList onNavigate={setActivePage} />;
             case "tasks":
-                return <TaskList />;
+                return <TaskList onNavigate={setActivePage} />;
             case "settings":
                 return <Settings />;
+            case "create_task":
+                return <CreateTask />;
             default:
                 return <Text>Page inconnue</Text>;
         }
@@ -68,7 +72,7 @@ export default function App() {
                         label={t("workspaces")}
                     />
                     <NavButton 
-                        isActive={activePage === "tasks"} 
+                        isActive={activePage === "tasks" || activePage === "create_task"} 
                         onClick={() => setActivePage("tasks")}
                         label={t("tasks")}
                     />

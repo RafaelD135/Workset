@@ -15,10 +15,10 @@ import { useTranslation } from "react-i18next";
 import { useTheme as useNextTheme } from "next-themes";
 
 // Import des icônes
-import VscodeIcon from "../assets/taskIcons/vscode.svg"; 
-import TerminalIcon from "../assets/taskIcons/terminal.svg";
-import ExplorerIcon from "../assets/taskIcons/explorer.svg";
-import BrowserIcon from "../assets/taskIcons/browser.svg";
+import VscodeIcon from "../../assets/taskIcons/vscode.svg"; 
+import TerminalIcon from "../../assets/taskIcons/terminal.svg";
+import ExplorerIcon from "../../assets/taskIcons/explorer.svg";
+import BrowserIcon from "../../assets/taskIcons/browser.svg";
 
 interface Task {
     id: number;

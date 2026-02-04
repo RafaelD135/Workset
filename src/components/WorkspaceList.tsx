@@ -22,7 +22,7 @@ interface Workspace {
     tasks: number[];
 }
 
-export default function WorkspaceList() {
+export default function WorkspaceList({ onNavigate }: { onNavigate: (page: string) => void }) {
     const { t } = useTranslation();
     const { theme } = useNextTheme();
     
