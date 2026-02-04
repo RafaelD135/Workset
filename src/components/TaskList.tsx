@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme as useNextTheme } from "next-themes";
 import { FaPlus } from "react-icons/fa";
 
-import TaskComponent from "./TaskComponent";
+import TaskComponent from "./tasks/TaskComponent";
 
 interface Task {
     id: number;

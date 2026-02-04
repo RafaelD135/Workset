@@ -13,8 +13,8 @@ import { invoke } from '@tauri-apps/api/core';
 import { useTranslation } from "react-i18next";
 import { useTheme as useNextTheme } from "next-themes";
 
-import WorkspaceComponent from "./WorkspaceComponent";
-import TaskComponent from "./TaskComponent";
+import WorkspaceComponent from "./workspaces/WorkspaceComponent";
+import TaskComponent from "./tasks/TaskComponent";
 
 // Types correspondants au Rust
 interface Task {
