@@ -6,6 +6,7 @@ import {
 	VStack,
 	Flex
 } from "@chakra-ui/react";
+
 import { useState } from "react";
 import { useTheme as useNextTheme } from "next-themes";
 
@@ -107,8 +108,15 @@ export default function CreateTask({ onNavigate }: { onNavigate: (page: string) 
 					</Box>
 				</Box>
 
+				<Box 
+					h="1px" 
+					w="100%" 
+					bg={theme === "light" ? "gray.200" : "gray.700"} 
+					my={6} 
+				/>
+				
 				{/* Rendu des paramètres déportés */}
-				<Box pt={2}>
+				<Box>
 					{renderParams()}
 				</Box>
 
