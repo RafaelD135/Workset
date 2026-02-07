@@ -115,7 +115,24 @@ export default function CreateTask({ onNavigate }: { onNavigate: (page: string) 
 				{/* Boutons */}
 				<Flex justify="flex-end" gap={3} pt={4}>
 					<Button variant="ghost" onClick={() => onNavigate("tasks")}>Annuler</Button>
-					<Button colorScheme="blue" disabled={!name || Object.keys(params).length === 0} onClick={handleCreate}>Créer la tâche</Button>
+					<Button
+						bg={theme === "light" ? "blue.500" : "blue.600"}
+						color="white"
+						_hover={{
+							bg: theme === "light" ? "blue.600" : "blue.500",
+						}}
+						_disabled={{
+							bg: theme === "light" ? "gray.200" : "gray.700",
+							color: "gray.500",
+							cursor: "not-allowed",
+							_hover: { bg: theme === "light" ? "gray.200" : "gray.700" }
+						}}
+						disabled={!name}
+						onClick={handleCreate}
+						px={8}
+					>
+						{"Créer la tâche"}
+					</Button>
 				</Flex>
 			</VStack>
 		</Box>
