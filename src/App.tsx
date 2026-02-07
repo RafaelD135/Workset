@@ -16,8 +16,8 @@ import CreateTask from "./components/tasks/CreateTask";
 import AppLogo from "./assets/icon.png";
 
 export default function App() {
-    const { theme } = useNextTheme();
-    const { t } = useTranslation();
+    const { theme, setTheme } = useNextTheme();
+    const { t, i18n } = useTranslation();
     
     const [activePage, setActivePage] = useState("dashboard");
 
@@ -106,6 +106,33 @@ export default function App() {
                 {renderContent()}
             </Box>
 
+			{/* SECTION DEV - BAS GAUCHE */}
+			<div style={{ position: 'fixed', bottom: '20px', left: '20px', display: 'flex', gap: '10px', zIndex: 9999 }}>
+				{/* Bouton Thème : Affiche T pour Theme */}
+				<button 
+					onClick={() => {
+						const nextTheme = theme === "light" ? "dark" : "light";
+						// On utilise la fonction de ton import useNextTheme
+						setTheme(nextTheme);
+
+					}}
+					style={{ width: '40px', height: '40px', backgroundColor: '#3182ce', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+				>
+					T
+				</button>
+
+				{/* Bouton Langue : Affiche L pour Langue */}
+				<button 
+					onClick={() => {
+						// On bascule entre 'fr' et 'en'
+						const nextLanguage = i18n.language === "fr" ? "en" : "fr";
+						i18n.changeLanguage(nextLanguage);
+					}}
+					style={{ width: '40px', height: '40px', backgroundColor: '#718096', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+				>
+					L
+				</button>
+			</div>
         </Flex>
     );
 }
