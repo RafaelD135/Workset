@@ -19,13 +19,14 @@ export default function CreateTask({ onNavigate }: { onNavigate: (page: string) 
 	const { theme } = useNextTheme();
 	const [name, setName] = useState("");
 	const [type, setType] = useState("VsCode");
+	const [params, setParams] = useState({});
 
 	const renderParams = () => {
 		switch (type) {
-			case "VsCode": return <ParamVsCode />;
-			case "Internet": return <ParamInternet />;
-			case "Terminal": return <ParamTerminal />;
-			case "FileExplorer": return <ParamExplorer />;
+			case "VsCode": return <ParamVsCode value={params} onChange={setParams} />;
+			case "Internet": return <ParamInternet value={params} onChange={setParams} />;
+			case "Terminal": return <ParamTerminal value={params} onChange={setParams} />;
+			case "FileExplorer": return <ParamExplorer value={params} onChange={setParams} />;
 			default: return null;
 		}
 	};
@@ -38,7 +39,7 @@ export default function CreateTask({ onNavigate }: { onNavigate: (page: string) 
 			border="1px solid"
 			borderColor={theme === "light" ? "gray.200" : "gray.800"}
 		>
-			<Text fontSize="xl" fontWeight="bold" mb={6}>Nouvelle tâche</Text>
+			<Text fontSize="xl" fontWeight="bold" mb={6}>{name || "Nouvelle tâche"}</Text>
 
 			<VStack align="stretch">
 				{/* Champ Nom */}
@@ -56,7 +57,10 @@ export default function CreateTask({ onNavigate }: { onNavigate: (page: string) 
 					<Text mb={2} fontSize="sm" fontWeight="medium">Type</Text>
 					<Box
 						as="select"
-						onChange={(e: any) => setType(e.target.value)}
+						onChange={(e: any) =>{
+							setType(e.target.value);
+							setParams({});
+						}}
 						width="100%"
 						height="40px"
 						px={3}
