@@ -32,7 +32,7 @@ export default function App() {
             case "settings":
                 return <Settings />;
             case "create_task":
-                return <CreateTask />;
+                return <CreateTask onNavigate={setActivePage} />;
             default:
                 return <Text>Page inconnue</Text>;
         }
