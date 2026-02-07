@@ -12,6 +12,7 @@ pub fn run() {
             commands::launch_workspace,
             storage::load_tasks,
             storage::save_tasks,
+			storage::create_task,
             storage::load_workspaces,
             storage::save_workspaces,
         ])
