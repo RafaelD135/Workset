@@ -9,11 +9,22 @@ import {
 import { useState } from "react";
 import { useTheme as useNextTheme } from "next-themes";
 
-// Tes imports
+import { invoke } from "@tauri-apps/api/core";
+
 import ParamVsCode from "./createParam/ParamVsCode";
 import ParamInternet from "./createParam/ParamInternet";
 import ParamTerminal from "./createParam/ParamTerminal";
 import ParamExplorer from "./createParam/ParamExplorer";
+
+interface Task {
+    id: number;
+    name: string;
+    config: {
+        type: string;
+        params: any;
+    };
+}
+
 
 export default function CreateTask({ onNavigate }: { onNavigate: (page: string) => void }) {
 	const { theme } = useNextTheme();
@@ -28,6 +39,24 @@ export default function CreateTask({ onNavigate }: { onNavigate: (page: string) 
 			case "Terminal": return <ParamTerminal value={params} onChange={setParams} />;
 			case "FileExplorer": return <ParamExplorer value={params} onChange={setParams} />;
 			default: return null;
+		}
+	};
+
+	const handleCreate = async () => {
+		try {
+			const taskConfig = {
+				type: type,
+				params: params
+			};
+
+			await invoke("create_task", { 
+				name: name, 
+				config: taskConfig 
+			});
+
+			onNavigate("tasks");
+		} catch (error) {
+			console.error("Erreur Rust :", error);
 		}
 	};
 
@@ -52,7 +81,7 @@ export default function CreateTask({ onNavigate }: { onNavigate: (page: string) 
 					/>
 				</Box>
 
-				{/* Sélecteur de Type (Le style de tout à l'heure) */}
+				{/* Sélecteur de Type */}
 				<Box>
 					<Text mb={2} fontSize="sm" fontWeight="medium">Type</Text>
 					<Box
@@ -86,7 +115,7 @@ export default function CreateTask({ onNavigate }: { onNavigate: (page: string) 
 				{/* Boutons */}
 				<Flex justify="flex-end" gap={3} pt={4}>
 					<Button variant="ghost" onClick={() => onNavigate("tasks")}>Annuler</Button>
-					<Button colorScheme="blue">Créer la tâche</Button>
+					<Button colorScheme="blue" disabled={!name || Object.keys(params).length === 0} onClick={handleCreate}>Créer la tâche</Button>
 				</Flex>
 			</VStack>
 		</Box>
